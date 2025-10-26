@@ -14,7 +14,7 @@ transform = transforms.Compose([
 
 ])
 """
-def getDataloader(train_dir ,val_dir, test_dir, batch_siz=20):
+def getDataloader(train_dir ,val_dir, test_dir, batch_size=20):
 
     mean = [0.485, 0.456, 0.406]
     std = [0.229, 0.224, 0.225]
@@ -31,7 +31,7 @@ def getDataloader(train_dir ,val_dir, test_dir, batch_siz=20):
     # val preprocessing
     transforms_val = transforms.Compose([
         transforms.Resize(256),
-        transforms.CenterCrop(224),
+        transforms.CenterCrop(224), # cắt ở chính giữa 
         transforms.Grayscale(num_output_channels=3),
         transforms.ToTensor(),
         transforms.Normalize(mean=mean, std=std)
