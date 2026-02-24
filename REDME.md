@@ -19,3 +19,6 @@
 ### 3.Data Augmentation 
 
 ### model Resnet50 
+
+### voi 1 so may su dung gpu thi co the tai thu vien torch tuy bien o day minh co su dung gpu nen se cai rieng 1 thu vien pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121 
+## con lai chi can pip install -r requirements.txt
