@@ -45,10 +45,10 @@ def getDataloader(train_dir ,val_dir, test_dir, batch_size=20):
         transforms.ToTensor(),
     ])
 
-
+    """ Đọc dữ liệu từ thư mục và áp dụng transform đã định nghĩa ở trên.
     train_dir = "chest_xray/train"
     val_dir = "chest_xray/val"
-    test_dir = "chest_xray/test"
+    test_dir = "chest_xray/test"""
 
 
     train_ds = datasets.ImageFolder(train_dir, transform=transforms_train)
