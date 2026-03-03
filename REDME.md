@@ -1,24 +1,121 @@
-# Download Datatset in Kaggle 
-#### install all framework in requiremments.txt
-#### create api token in kaggle
-#### mkdir kaggele
-#### copy yourpath kaggle.son kaggle\
-`kaggle.api.authenticate()`
+🩻 Chest X-ray Pneumonia Detection using ResNet50
+📌 Introduction
 
-`kaggle.api.dataset_download_files('ghost5612/chest-x-ray-images-normal-and-pneumonia', unzip=True, path='.')`
-# datasrt in kaggle Chest X-ray 
+This project builds a deep learning model to classify chest X-ray images into:
 
-# Model AI 
-### Sử dụng model ResNet50 với 50 lớp tích chập
+NORMAL
 
+PNEUMONIA
 
-# Intoduction 
+The model is implemented using PyTorch and deployed with Streamlit.
 
-### 1.reszing 224,224, 
-### 2.Normalization,
-### 3.Data Augmentation 
+📂 Dataset
 
-### model Resnet50 
+Dataset from Kaggle:
 
-### voi 1 so may su dung gpu thi co the tai thu vien torch tuy bien o day minh co su dung gpu nen se cai rieng 1 thu vien pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121 
-## con lai chi can pip install -r requirements.txt
+Chest X-ray Images (Normal and Pneumonia)
+
+Download dataset:
+
+kaggle.api.authenticate()
+kaggle.api.dataset_download_files(
+    'ghost5612/chest-x-ray-images-normal-and-pneumonia',
+    unzip=True,
+    path='.'
+)
+⚙️ Installation
+1️⃣ Install all required packages
+pip install -r requirements.txt
+
+If using GPU (CUDA 12.1):
+
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+🔑 Kaggle API Setup
+pip install kaggle
+
+Create API token from Kaggle
+
+Create folder:
+
+mkdir kaggle
+
+Copy your kaggle.json into that folder
+
+🧠 Model Architecture
+ResNet50 (50 convolutional layers)
+
+Pretrained on ImageNet
+
+Transfer Learning
+
+Fine-tuning final layers
+
+🔍 Data Processing
+
+Resize images to 224x224
+
+Convert grayscale to 3 channels
+
+Normalize using ImageNet mean/std
+
+Data Augmentation:
+
+RandomResizedCrop
+
+RandomHorizontalFlip
+
+🚀 Training Strategy
+
+CrossEntropyLoss
+
+Adam optimizer
+
+ReduceLROnPlateau scheduler
+
+Early stopping
+
+GPU acceleration (CUDA)
+
+📊 Results
+Model	Accuracy
+ResNet50 TL	~93-96%
+🖥 Deployment
+
+Run Streamlit app:
+
+streamlit run app.py
+
+Upload X-ray image to get prediction.
+
+📁 Requirements.txt
+numpy>=1.21.0
+pillow>=8.0.0
+tqdm>=4.62.0
+opencv-python>=4.5.0
+kaggle>=1.5.0
+streamlit
+fastapi
+uvicorn
+🎯 Future Improvements
+
+Add Grad-CAM visualization
+
+Try EfficientNet
+
+Deploy on cloud (Render / HuggingFace)
+
+🏁 Conclusion
+
+This project demonstrates:
+
+Deep Learning with PyTorch
+
+Transfer Learning
+
+Model fine-tuning
+
+GPU training
+
+Model deployment with Streamlit
+
+Suitable for Machine Learning / AI Internship applications.

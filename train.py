@@ -1,6 +1,8 @@
 import torch
 import torch.nn as nn
 from tqdm import tqdm
+from model import get_model
+from Preprocessing import getDataloader
 
 
 def train_model(model, train_loader, val_loader, epochs=10, lr=1e-4):
@@ -11,7 +13,11 @@ def train_model(model, train_loader, val_loader, epochs=10, lr=1e-4):
     model = model.to(device)
 
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
+    optimizer = torch.optim.Adam(
+        filter(lambda p: p.requires_grad, model.parameters()),
+        lr=lr
+    )
+
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
         optimizer, mode='min', patience=2, factor=0.5
     )
@@ -89,3 +95,15 @@ def train_model(model, train_loader, val_loader, epochs=10, lr=1e-4):
                 break
 
     print("Training complete.")
+
+if __name__ == "__main__":
+
+    train_loader, val_loader, _ = getDataloader(
+        "chest_xray/train",
+        "chest_xray/val",
+        "chest_xray/test"
+    )
+
+    model = get_model(num_classes=2, freeze_backbone=False)
+
+    train_model(model, train_loader, val_loader, epochs=10)

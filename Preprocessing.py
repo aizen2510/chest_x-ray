@@ -14,7 +14,7 @@ transform = transforms.Compose([
 
 ])
 """
-def getDataloader(train_dir ,val_dir, test_dir, batch_size=20):
+def getDataloader(train_dir ,val_dir, test_dir, batch_size=8):
 
     mean = [0.485, 0.456, 0.406]
     std = [0.229, 0.224, 0.225]
@@ -63,9 +63,9 @@ def getDataloader(train_dir ,val_dir, test_dir, batch_size=20):
     pin_memory=True: Tăng hiệu suất khi dùng GPU (copy dữ liệu nhanh hơn sang
     """
 
-    train_loader = DataLoader(train_ds, batch_size=64, shuffle=True, num_workers=4, pin_memory=True)
-    val_loader = DataLoader(val_ds, batch_size=64, num_workers=4, pin_memory=True)
-    test_loader = DataLoader(test_ds, batch_size=64, num_workers=4, pin_memory=True)
+    train_loader = DataLoader(train_ds, batch_size=8, shuffle=True, num_workers=4, pin_memory=True)
+    val_loader = DataLoader(val_ds, batch_size=8, num_workers=4, pin_memory=True)
+    test_loader = DataLoader(test_ds, batch_size=8, num_workers=4, pin_memory=True)
 
 
     return train_loader, val_loader, test_loader
